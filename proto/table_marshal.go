@@ -2712,7 +2712,7 @@ func Marshal(pb Message) ([]byte, error) {
 	if m, ok := pb.(newMarshaler); ok {
 		siz := m.XXX_Size()
 		b := make([]byte, 0, siz)
-		return m.XXX_Marshal(b, false)
+		return m.XXX_Marshal(b, true)
 	}
 	if m, ok := pb.(Marshaler); ok {
 		// If the message can marshal itself, let it do it, for compatibility.
@@ -2726,7 +2726,7 @@ func Marshal(pb Message) ([]byte, error) {
 	var info InternalMessageInfo
 	siz := info.Size(pb)
 	b := make([]byte, 0, siz)
-	return info.Marshal(b, pb, false)
+	return info.Marshal(b, pb, true)
 }
 
 // Marshal takes a protocol buffer message
