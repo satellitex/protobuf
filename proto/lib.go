@@ -356,7 +356,7 @@ type Buffer struct {
 // NewBuffer allocates a new Buffer and initializes its internal data to
 // the contents of the argument slice.
 func NewBuffer(e []byte) *Buffer {
-	return &Buffer{buf: e}
+	return &Buffer{buf: e, deterministic:true}
 }
 
 // Reset resets the Buffer, ready for marshaling a new protocol buffer.
